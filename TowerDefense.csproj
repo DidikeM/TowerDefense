@@ -12,6 +12,7 @@
     </PropertyGroup>
     <PropertyGroup>
         <MonoGameExtendedPipelineReferencePath>$(MSBuildThisFileDirectory)pipeline-references</MonoGameExtendedPipelineReferencePath>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
         <None Remove="Icon.ico" />
