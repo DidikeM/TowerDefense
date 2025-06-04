@@ -55,6 +55,11 @@ public class GameScene : IScene
     public void Initialize()
     {
         _mapManager = new MapManager(_content, _graphicsDevice);
+        
+        // İlk olarak content yükle
+        LoadContent();
+        
+        // Sonra haritayı yükle
         _mapManager.LoadMap("level1"); // Varsayılan harita
         
         SetupUI();

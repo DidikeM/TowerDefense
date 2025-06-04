@@ -51,15 +51,15 @@ public class MapManager
         
         if (_tiledMap == null) return;
         
-        // "Path" katmanından yol bilgilerini çıkar
-        var pathLayer = _tiledMap.ObjectLayers.FirstOrDefault(layer => layer.Name == "Path");
+        // "PathPoints" katmanından yol bilgilerini çıkar
+        var pathLayer = _tiledMap.ObjectLayers.FirstOrDefault(layer => layer.Name == "PathPoints");
         if (pathLayer != null)
         {
             var pathPoints = pathLayer.Objects
-                .Where(obj => obj.Type == "PathPoint")
+                .Where(obj => obj.Name == "PathPoint")
                 .OrderBy(obj => 
                 {
-                    if (obj.Properties.TryGetValue("order", out var orderValue))
+                    if (obj.Properties.TryGetValue("Order", out var orderValue))
                         return int.Parse(orderValue);
                     return 0;
                 })
@@ -86,7 +86,7 @@ public class MapManager
         if (towerLayer != null)
         {
             var positions = towerLayer.Objects
-                .Where(obj => obj.Type == "TowerPosition")
+                .Where(obj => obj.Name == "TowerPosition")
                 .Select(obj => new Vector2(obj.Position.X, obj.Position.Y))
                 .ToList();
                 
